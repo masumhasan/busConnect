@@ -391,6 +391,32 @@ WHERE BSM.BusID = 1;
 
 
 
+To describe a table in MySQL and see its structure, you can use the `DESCRIBE` or `SHOW COLUMNS` query. Here's the basic syntax:
+
+DESCRIBE table_name;
+
+
+or
+
+SHOW COLUMNS FROM table_name;
+
+
+Replace `table_name` with the name of the table you want to describe.
+
+For example, if you want to describe the "Buses" table in your project, you can use either of the following queries:
+
+
+DESCRIBE Buses;
+
+
+or
+
+SHOW COLUMNS FROM Buses;
+
+Running one of these queries will provide you with information about the columns in the "Buses" table, including their names, data types, and other properties.
+
+
+
 
 
 
