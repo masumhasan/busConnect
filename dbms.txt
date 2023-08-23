@@ -1,0 +1,370 @@
+   CREATE DATABASE DhakaBusRoutes;
+USE DhakaBusRoutes;
+ 
+
+Create Tables
+
+Buses Table-
+
+CREATE TABLE Buses (
+    BusID INT PRIMARY KEY,
+    BusName VARCHAR(255),
+    Schedule VARCHAR(255)
+);
+
+BusStops Table-
+
+CREATE TABLE BusStops (
+    StopID INT PRIMARY KEY,
+    StopName VARCHAR(255)
+);
+
+BusStopsMapping Table (for the many-to-many relationship)
+
+CREATE TABLE BusStopsMapping (
+    BusID INT,
+    StopID INT,
+    PRIMARY KEY (BusID, StopID),
+    FOREIGN KEY (BusID) REFERENCES Buses(BusID),
+    FOREIGN KEY (StopID) REFERENCES BusStops(StopID)
+);
+
+
+FareTable Table
+
+CREATE TABLE FareTable (
+    FareID INT PRIMARY KEY,
+    BusID INT,
+    SourceStopID INT,
+    DestinationStopID INT,
+    Fare INT,
+    FOREIGN KEY (BusID) REFERENCES Buses(BusID),
+    FOREIGN KEY (SourceStopID) REFERENCES BusStops(StopID),
+    FOREIGN KEY (DestinationStopID) REFERENCES BusStops(StopID)
+);
+
+
+
+
+
+
+
+
+
+New data input
+
+
+
+ Insert Sample Data into Buses Table
+
+
+INSERT INTO Buses (BusID, BusName, Schedule)
+VALUES
+    (1, 'Midline Bus', 'Every 30 minutes'),
+    (2, 'Nogor Poribohon', 'Every 15 minutes'),
+    (3, 'Alif Poribohon', 'Every 15 minutes'),
+    (4, 'BRTC', 'No Schedule'),
+    (5, 'Dhakar Chaka', 'Every 30 minutes'),
+    (6, 'Bikash Poribohon', 'Every 30 minutes'),
+    (7, 'Dhaka Transport', 'Every 15 minutes'),
+    (8, 'ATCL', 'Hourly'),
+    (9, 'Bihanga Paribahan', 'Every 15 minutes'),
+    (10, 'Ramjan Paribahan', 'Every 30 minutes'),
+    (11, 'TURAAG Poribahan', 'Every 15 minutes'),
+    (12, 'Transilva', 'Hourly'),
+    (13, 'Sunbeam Bus', 'No Schedule'),
+    (14, 'Silver Star', 'Every 30 minutes'),
+    (15, 'Rajacity Bus', 'Every 30 minutes'),
+    (16, 'Malancha', 'Every 15 minutes'),
+    (17, 'Rainbow Bus', 'Hourly'),
+    (18, 'Dreamliner', 'Every 30 minutes'),
+    (19, 'Happy Travel', 'Every 15 minutes'),
+    (20, 'Royal Travel', 'Every 30 minutes'),
+    (21, 'City Rider', 'Every 30 minutes'),
+    (22, 'Sunset Express', 'Every 15 minutes'),
+    (23, 'Greenway Bus', 'Hourly'),
+    (24, 'Golden Express', 'Every 30 minutes'),
+    (25, 'Silver Arrow', 'Every 30 minutes'),
+    (26, 'Star Express', 'Every 15 minutes'),
+    (27, 'Dynamic Bus', 'Every 30 minutes'),
+    (28, 'Commuter Bus', 'Every 30 minutes'),
+    (29, 'Metro Rider', 'Hourly'),
+    (30, 'Dream Bus', 'Every 15 minutes');
+
+Insert Sample Data into BusStops Table
+
+
+INSERT INTO BusStops (StopID, StopName)
+VALUES
+    (1, 'Gabtoli'),
+    (2, 'Mohammadpur'),
+    (3, 'Dhanmondi'),
+    (4, 'Jigatala'),
+    (5, 'Science Lab'),
+    (6, 'Shahbag'),
+    (7, 'Bangla Motor'),
+    (8, 'Paltan'),
+    (9, 'Motijheel'),
+    (10, 'Gulistan'),
+    (11, 'Farmgate'),
+    (12, 'Karwan Bazar'),
+    (13, 'Tejgaon'),
+    (14, 'Mohakhali'),
+    (15, 'Banani'),
+    (16, 'Uttara'),
+    (17, 'Airport'),
+    (18, 'Mirpur'),
+    (19, 'Pallabi'),
+    (20, 'Agargaon'),
+    (21, 'Kamalapur'),
+    (22, 'Badda'),
+    (23, 'Malibagh'),
+    (24, 'Lalbagh'),
+    (25, 'Moghbazar'),
+    (26, 'New Market'),
+    (27, 'Shyamoli'),
+    (28, 'Kallyanpur'),
+    (29, 'Kuril Bishwa Road'),
+    (30, 'Basundhara'),
+    (31, 'Khilgaon'),
+    (32, 'Shyampur'),
+    (33, 'Demra'),
+    (34, 'Mirhajaribagh'),
+    (35, 'Gandaria'),
+    (36, 'Siddikbazar'),
+    (37, 'Shantinagar'),
+    (38, 'Wari'),
+    (39, 'Hatirjheel'),
+    (40, 'Panthapath'),
+    (41, 'AsadGate'),
+     (42, 'Khamarbari'),
+    (43, 'Jahangir Gate'),
+    (44, 'Wireless'),
+    (45, 'Gulshan 1'),
+    (46, 'Badda Link Road'),
+    (47, 'Uttor Badda'),
+    (48, 'Shahjadpur'),
+    (49, 'Bashtola'),
+    (50, 'Notun Bajar'),
+    (51, 'Bashundhara'),
+    (52, 'Jamuna Future Park'),
+    (53, 'Kuril Biswa Road');
+
+Insert Sample Data into BusStopsMapping Table (Random Mapping)
+
+
+
+
+
+INSERT INTO BusStopsMapping (BusID, StopID)
+VALUES
+    (1, 2),
+    (1, 3),
+    (1, 4),
+    (1, 5),
+    (1, 6),
+    (1,7),
+    (1,8),
+    (1, 9),
+    (2, 1),
+    (2, 3),
+    (2, 5),
+    (3, 3),
+    (3, 6),
+    (3, 9),
+    (4, 2),
+    (4, 41),
+    (4, 42),
+    (4, 43),
+    (4, 44),
+    (4, 45),
+    (4, 46),
+    (4, 47),
+    (4, 48),
+    (4, 49),
+    (4, 50),
+    (4, 51),
+    (4, 52),
+    (4, 53),
+    (5, 3),
+    (5, 6),
+    (5, 7),
+    (6, 3),
+    (6, 5),
+    (6, 7),
+    (7, 4),
+    (7, 6),
+    (7, 8),
+    (8, 1),
+    (8, 7),
+    (8, 10),
+    (9, 3),
+    (9, 9),
+    (9, 11),
+    (10, 2),
+    (10, 5),
+    (10, 7),
+    (11, 3),
+    (11, 5),
+    (11, 6),
+    (12, 3),
+    (12, 6),
+    (12, 7),
+    (13, 2),
+    (13, 4),
+    (13, 8),
+    (14, 3),
+    (14, 6),
+    (14, 9),
+    (15, 3),
+    (15, 7),
+    (15, 10),
+    (16, 4),
+    (16, 8),
+    (16, 12),
+    (17, 3),
+    (17, 6),
+    (17, 11),
+    (18, 2),
+    (18, 4),
+    (18, 8),
+    (19, 3),
+    (19, 9),
+    (19, 12),
+    (20, 2),
+    (20, 5),
+    (20, 7);
+    
+ Insert Sample Data into FareTable Table (Random Fares)
+
+
+
+INSERT INTO FareTable (FareID, BusID, SourceStopID, DestinationStopID, Fare)
+VALUES
+    (1, 1, 1, 2, 20),
+    (2, 1, 2, 3, 25),
+    (3, 2, 1, 3, 30),
+    (4, 3, 2, 4, 35),
+    (5, 4, 1, 2, 22),
+    (6, 4, 2, 4, 30),
+    (7, 5, 2, 4, 32),
+    (8, 5, 3, 6, 28),
+    (9, 6, 1, 3, 27),
+    (10, 6, 4, 6, 31),
+    (11, 7, 2, 4, 24),
+    (12, 7, 3, 6, 29),
+    (13, 8, 1, 2, 19),
+    (14, 8, 2, 3, 24),
+    (15, 9, 1, 3, 29),
+    (16, 9, 3, 5, 26),
+    (17, 10, 2, 4, 28),
+    (18, 10, 4, 6, 30),
+    (19, 11, 1, 2, 21),
+    (20, 4, 2, 41, 10),
+    (21, 4, 2, 42, 10),
+    (22, 4, 2, 43, 10),
+    (23, 4, 2, 14, 15),
+    (24, 4, 2, 44, 15),
+    (25, 4, 2, 45, 20),
+    (26, 4, 2, 46, 25),
+    (27, 4, 2, 47, 25),
+    (28, 4, 2, 48, 25),
+    (29, 4, 2, 49, 30),
+    (30, 4, 2, 50, 30),
+    (31, 4, 2, 51, 35),
+    (32, 4, 2, 52, 40),
+    (33, 1, 2, 3, 8),
+    (34, 1, 2, 4, 10),
+    (35, 1, 2, 5, 15),
+    (36, 1, 2, 6, 15),
+    (37, 1, 2, 7, 20),
+    (38, 1, 2, 8, 20),
+    (39, 1, 2, 9, 25),
+    (40, 11, 3, 53, 45);
+
+
+
+
+Add more records as needed
+
+
+
+
+Q1 all the BusStops Name That BusID 4 goes through and their fare  from Mohammadpur
+
+
+
+SELECT BS.StopName, FT.Fare
+FROM BusStopsMapping BSM
+INNER JOIN BusStops BS ON BSM.StopID = BS.StopID
+INNER JOIN FareTable FT ON BSM.BusID = FT.BusID AND FT.SourceStopID = 2
+WHERE BSM.BusID = 4;
+
+Mdpur to Motijheel
+
+
+
+
+
+
+
+
+
+
+
+
+Q2 retrieve all the bus names that go through X and Y, along with their fare from X  to Y
+
+
+
+Mohammadpur to Gulshan 1
+
+
+SELECT B.BusName, F.Fare
+FROM Buses B
+JOIN BusStopsMapping BSM_x ON B.BusID = BSM_x.BusID
+JOIN BusStopsMapping BSM_y ON B.BusID = BSM_y.BusID
+JOIN FareTable F ON B.BusID = F.BusID AND BSM_x.StopID = F.SourceStopID AND BSM_y.StopID = F.DestinationStopID
+WHERE BSM_x.StopID = 2
+  AND BSM_y.StopID =45;
+
+MDPUR TO Motijheel
+
+SELECT B.BusName, F.Fare
+FROM Buses B
+JOIN BusStopsMapping BSM_x ON B.BusID = BSM_x.BusID
+JOIN BusStopsMapping BSM_y ON B.BusID = BSM_y.BusID
+JOIN FareTable F ON B.BusID = F.BusID AND BSM_x.StopID = F.SourceStopID AND BSM_y.StopID = F.DestinationStopID
+WHERE BSM_x.StopID = 2
+  AND BSM_y.StopID =9;
+
+
+
+retrieve all the bus names that go through Jigatala and Shahbag, along with their fare from Jigatala to Shahbag, and their schedule
+
+
+
+
+
+Delete RECORD
+
+
+DELETE FROM FareTable
+WHERE FareID IN (1, 2);
+
+
+Update Record
+
+UPDATE FareTable
+SET Fare = 15
+WHERE FareID = 9
+
+TEMP
+
+
+
+
+
+
+
+
