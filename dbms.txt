@@ -359,7 +359,27 @@ UPDATE FareTable
 SET Fare = 15
 WHERE FareID = 9
 
-TEMP
+INSERT -  
+
+INSERT INTO table_name (column1, column2, column3, ...)
+VALUES (value1, value2, value3, ...);
+
+INSERT INTO users (first_name, last_name, email, age)
+VALUES ('John', 'Doe', 'johndoe@example.com', 30);
+
+
+
+SQL query to add the "Route" column:
+
+ALTER TABLE Buses
+ADD Route VARCHAR(255);
+
+
+DROP:
+
+ALTER TABLE Buses
+DROP COLUMN Route;
+
 
 
 
