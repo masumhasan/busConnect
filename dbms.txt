@@ -382,6 +382,15 @@ DROP COLUMN Route;
 
 
 
+SELECT BS.StopName, FT.Fare
+FROM BusStopsMapping BSM
+INNER JOIN BusStops BS ON BSM.StopID = BS.StopID
+LEFT JOIN FareTable FT ON BSM.BusID = FT.BusID AND FT.SourceStopID = 2
+WHERE BSM.BusID = 1;
+
+
+
+
 
 
 
