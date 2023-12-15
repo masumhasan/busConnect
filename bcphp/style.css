@@ -1,0 +1,18 @@
+.box1 h2{
+    float: left;
+
+}
+.box1 button{
+    float: right;
+}
+.container {
+    margin-top: 50px;
+    align-items: center;
+}
+.h6 {
+    text-align: center;
+    color: red;
+}
+.table {
+    text-align: center;
+}
