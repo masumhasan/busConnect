@@ -11,12 +11,12 @@ if (isset($_POST['addbusstop'])) {
         header('location: busstops.php?message=YOU NEED TO FILL IN THE BUSStop NAME');
     } else {
         // Use prepared statement to prevent SQL injection
-        $query = "INSERT INTO `busstops` (StopID, StopName) VALUES (?, ?, ?)";
+        $query = "INSERT INTO `busstops` (StopID, StopName) VALUES (?, ?)";
         $stmt = mysqli_prepare($connection, $query);
 
         if ($stmt) {
             // Bind parameters to the prepared statement
-            mysqli_stmt_bind_param($stmt, "iss", $StopID, $StopName);
+            mysqli_stmt_bind_param($stmt, "is", $StopID, $StopName);
 
             // Execute the statement
             $success = mysqli_stmt_execute($stmt);

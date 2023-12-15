@@ -46,6 +46,7 @@ if(isset($_GET['deletemsg'])){
             <tr>
             
               <th scope="col">Fare ID</th>
+              <th scope="col">Bus ID</th>
               <th scope="col">Source ID</th>
               <th scope="col">Destination ID</th>
               <th scope="col">Fare</th>
