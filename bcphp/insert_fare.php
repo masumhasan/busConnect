@@ -13,12 +13,12 @@ if (isset($_POST['addfare'])) {
         header('location: faretable.php?message=YOU NEED TO FILL IN THE BUS NAME');
     } else {
         // Use prepared statement to prevent SQL injection
-        $query = "INSERT INTO `faretable` (FareID, BusID, SourceStopID,DestinationStopID,Fare) VALUES (?, ?, ?)";
+        $query = "INSERT INTO `faretable` (FareID, BusID, SourceStopID,DestinationStopID,Fare) VALUES (?, ?,?,?, ?)";
         $stmt = mysqli_prepare($connection, $query);
 
         if ($stmt) {
             // Bind parameters to the prepared statement
-            mysqli_stmt_bind_param($stmt, "iss", $FareID, $BusID, $SourceStopID, $DestinationStopID,$Fare);
+            mysqli_stmt_bind_param($stmt, "iiidd", $FareID, $BusID, $SourceStopID, $DestinationStopID, $Fare);
 
             // Execute the statement
             $success = mysqli_stmt_execute($stmt);

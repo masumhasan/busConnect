@@ -47,6 +47,8 @@ if(isset($_GET['deletemsg'])){
             
               <th scope="col">STOP ID</th>
               <th scope="col">STOP NAME</th>
+              <th scope="col">Update</th>
+              <th scope="col">Delete</th>
               
            
             </tr>

@@ -13,7 +13,7 @@ include('header.php');
         <div class="box1">
             
       <h2 style="margin-bottom: 100px;"> StopMap </h2>
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Modal1">StopMap</button>
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Modal1">Add StopMap</button>
 
         </div>
         <?php
@@ -88,27 +88,27 @@ if(isset($_GET['deletemsg'])){
 </div>
 
 <!-- Modal -->
-<form class="form-inline" action="insert_busstop.php" method="post">
+<form class="form-inline" action="insert_stopmap.php" method="post">
 <div class="modal fade" id="Modal1" tabindex="-1" role="dialog" aria-labelledby="Modal1Label" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="ModalLabel">Add BusStop</h5>
+        <h5 class="modal-title" id="ModalLabel">Add STOPMAP</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
       
-     
+      <div class="form-group">
+            <label for="BusID"></label>
+            <input type="text" class="form-control" name="BusID" placeholder="BusID">
+          </div>
           <div class="form-group">
             <label for="StopID"></label>
             <input type="text" class="form-control" name="StopID" placeholder="StopID">
           </div>
-          <div class="form-group">
-            <label for="StopName"></label>
-            <input type="text" class="form-control" name="StopName" placeholder="StopName">
-          </div>
+
          
 
         
@@ -117,7 +117,7 @@ if(isset($_GET['deletemsg'])){
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <input type="submit" class="btn btn-success" name="addbusstop" value="ADD">
+        <input type="submit" class="btn btn-success" name="addstopmap" value="ADD">
 
       </div>
     </div>
